@@ -21,6 +21,12 @@ Do the following:
 */
 
 
+class person{
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+
 
 /*
 Task 1b - Values (not auto tested)
