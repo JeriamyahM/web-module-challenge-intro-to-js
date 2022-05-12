@@ -21,11 +21,14 @@ Do the following:
 */
 
 
-class person{
-  this.name = name;
-  this.age = age;
-  this.stomach = [];
+let votingAge = 13
+if (votingAge >=18){
+  console.log('You may vote.')
 }
+  else if(votingAge < 18){
+  console.log('You are not old enough to vote.')
+}
+
 
 
 /*
@@ -40,6 +43,15 @@ Do the following:
    HINT: no function required
 */
 
+let thing1 = 5
+let thing2 = 2
+if (thing1 < thing2){
+  let thing1 =3
+  console.log('Because the value of thing1 is less than thing2, it\'s new value is ' + thing1)
+}
+else if(thing1 >= thing2){
+  console.log('The value of thing1 is greater, so it will remain the same value.')
+}
 
 
 
@@ -55,6 +67,21 @@ Do the following:
    HINT: look up the Number method
 */
 
+//my first solution, but wouldnt work if the value is changed. Maybe this always works if I use const?
+let nummber = '1999'
+if(nummber === '1999'){
+  let number = 1999
+  console.log(nummber)
+}
+
+// Converts number to string (x.tostring())
+let x = '4'
+x.toString();
+(4).toString();
+
+//converts string to number (parseInt())
+let y = '6'
+console.log(parseInt(y));
 
 
 
@@ -67,9 +94,24 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+//comes back undefined
+/*note 2: Had to switch some things around but figured it out. Using return still seems 
+to lead to less typing so will be using return for math moving forward. At least basic math */
+
+let c = 2
+let d = 3
+
+function multiply(c, d){
+  console.log(c * d);
 }
+console.log(multiply(5, 2));
+
+// return function should be used for math it seems. I confused 
+function multi(c, d){
+  return c * d;
+}
+console.log(multi(c, d));
+
 
 
 
@@ -83,9 +125,23 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+// not sure why the dogyears isnt functioning, going to try my own
+/*
+let years = 2
+
+function dogYears(){
+  return 'The dog is ' + years * 7 + ' years old.'
 }
+console.log(dogYears());
+*/
+
+//Mines is working and is basically the same exact funtion, not sure why the template above wasnt working
+let Age = 3
+
+function dogAge(){
+  return 'The dog is ' + Age * 7 + ' years old.'
+}
+console.log(dogAge());
 
 
 
@@ -97,9 +153,6 @@ Use the hungryDog function and feeding requirements below to do the following:
 1. Invoke the hungryDog function below and pass it a weight value in pounds, followed by an age value in years
 2. 🌟 NOTE: if the dog is a puppy, the age will be a decimal (rounded to two places). For example: 3 months = .25 (3 divided by 12)
 3. Do the proper calculations and return the number of pounds of raw food to feed the dog/puppy in a day
-
-REMEMBER: This program should handle correctly adult AND puppy ages and weights
-HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 
 Feeding Requirements:
 
@@ -115,30 +168,57 @@ Puppies less than 1 year
    7 - 12 months 4% of their body weight
   
 NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
-NOTE 2: This is a great time to check the tests to see what it expects, versus what is actually 
-        returned from your function. This is an example of the output to look for on each test point. 
-          ● hungryDogFunction › Dog is 1 year and is 5lbs or less
 
-            expect(received).toBe(expected) // Object.is equality
+//Deleted code here as it was distracting */
 
-            Expected: 0.2
-            Received: undefined
+let DogAge = 1
+let PuppyAge = NaN
+let DogWeight = 15
 
-              21 | describe('hungryDogFunction', ()=>{ 
-              22 |   it('Dog is 1 year and is 5lbs or less', ()=>{
-            > 23 |     expect(functions.hungryDog(4, 1)).toBe(0.2);
-                |
-          ^
-              24 |   })
-      
-        Notice the expected and received, expected is what the test is looking for, and received is what was actually returned from this function. You can also see it's passing in two values, the number 4 and the number 1. 
-        So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
-*/  
-
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(){
+  if (PuppyAge >= 2 && PuppyAge <= 4){
+    return 'Your puppy should consume ' + .10 * DogWeight + ' lbs of food.'
+  }
+  else if(PuppyAge >= 5 && PuppyAge <= 7){
+    return 'Your puppy should consume ' + .05 * DogWeight + ' lbs of food.'
+  }
+  else if(PuppyAge >= 8 && PuppyAge <= 12){
+    return 'Your puppy should consume ' + .04 * DogWeight + ' lbs of food.'
+  }
+  else if(DogAge >= 1 && DogWeight <= 5){
+    return 'Your dog should consume ' + .05 * DogWeight + ' lbs of food.'
+  }
+  else if(DogAge >= 1 && DogWeight >= 6 && DogWeight <= 10){
+    return 'Your dog should consume ' + .04 * DogWeight + ' lbs of food.'
+  }
+  else if(DogAge >= 1 && DogWeight >= 11 && DogWeight <= 15){
+    return 'Your dog should consume ' + .03 * DogWeight + ' lbs of food.'
+  }
+  else if(DogAge >= 1 && DogWeight > 15){
+    return 'Your dog should consume ' + .02 * DogWeight + ' lbs of food.'
+  }
+  else{
+    console.log('Input error, please try again.')
+  }
 }
 
+   console.log(hungryDog());
+
+//I realized halfway through that this way may not be optimal. The version above is adjusted to what I believe is correct. 
+/* function hungryDog(){
+  if (PuppyAge >= 2 && PuppyAge <= 4 && DogWeight <= 5){
+    return 'Your puppy should consume ' + .10 * DogWeight + ' lbs of food.'
+  }
+  else if(PuppyAge >= 5 && PuppyAge <= 7 && DogWeight <= 10 && DogWeight >= 6){
+    return 'Your puppy should consume ' + .05 * PuppyWeight + ' lbs of food.'
+  }
+  else if(PuppyAge >= 8 && PuppyAge <= 12 && DogWeight <= 10 && DogWeight >= 6){
+    return 'Your puppy should consume ' + .05 * PuppyWeight + ' lbs of food.'
+  }
+}
+
+console.log(hungryDog()); 
+*/
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -162,11 +242,43 @@ Use the game function below to do the following:
 RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors | Or there's a tie
 */
 
+let user = 'scissors'
+let computer = ['rock', 'paper', 'scissors']
+
 function game(user, computer){
-  /*add your code here*/
+if(user === 'rock' && computer === 'rock'){
+  return 'it\'s a tie'
+  }
+else if(user === 'paper' && computer === 'paper'){
+  return 'it\'s a tie'
+ }
+else if(user === 'scissors' && computer === 'scissors'){
+  return 'it\'s a tie'
+ }
+else if(user === 'rock' && computer === 'paper'){
+  return 'you lose!'
+ }
+else if(user === 'paper' && computer === 'scissors'){
+  return 'you lose!'
+ }
+ else if(user === 'scissors' && computer === 'rock'){
+  return 'you lose!'
+ }
+ else if(computer === 'scissors' && user === 'rock'){
+  return 'you win!'
+ }
+ else if(computer === 'paper' && user === 'scissors'){
+  return 'you win!'
+ }
+ else if(computer === 'rock' && user === 'paper'){
+  return 'you win!'
+ }
+ else {
+   return 'There seems to be an issue. Please refresh page or try again later.'
+ }
 }
 
-
+console.log(game(user, computer[Math.floor(Math.random() * computer.length)]));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -179,10 +291,14 @@ Using the miles function below do the following:
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+let km = 0.62137
+let Mile = 2
+
+function miles(){
+   return Mile + "Km is converted to " + Mile * 0.62137 + ' miles.'
 }
 
+console.log(miles());
 
 
 //Task 5b - Feet to CM
@@ -190,12 +306,17 @@ function miles(/*add your code here*/){
 Using the feet function below do the following:
 1. Receive a number of cm
 2. Convert the number of cm to feet
-3. Return number of feet
+3. Return number of feet30.48
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+let feet = 3
+let cm = 30.48
+
+function centimeters(){
+   return feet + "ft is converted to " + feet * 30.48 + 'cm.'
 }
+
+console.log(centimeters());
 
 
 
@@ -213,10 +334,16 @@ Using the annoyingSong function below do the following:
 4. Each time the annoyingSong is run from this loop, it should console.log the string that was returned. 
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+for(let soda = 99; soda < 100; soda--){
+for(let soda2 = 100; soda2 < 100; soda2--) {
+
+function annoyingSong(){
+ return soda2 + ' bottles of soda on the wall, ' + soda2 + ' bottles of soda, take one down pass it around, ' + soda + ' bottles of soda on the wall'
+}
+}
 }
 
+console.log(annoyingSong());
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -233,11 +360,30 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+let num1 = 58
+
+function grade(num1){
+if(num1 >= 90 && num1 <= 100 ){
+return 'you got an A'
+}
+else if(num1 >= 80  && num1 <= 89){
+return 'you got a B'
+}
+else if(num1 >= 70 && num1 <= 79){ 
+return 'you got a C'
+}
+else if(num1 >= 60  && num1 <= 69){
+return 'you got a D'
+} 
+else if(num1 <= 59){
+return 'you got an F'
+}
+else{
+  return 'Input invalid, please try again.'
+}
 }
 
-
+console.log(grade(num1));
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
@@ -252,9 +398,44 @@ HINT - try looking up the .includes() method
 */
 
 
-function vowelCounter(/*add your code here*/) {
-  /*add your code here*/
+
+//not finished, need help, confused
+
+/*
+const vowels = ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u', 'Y', 'y']
+let word = 'Abcdef'
+let word2 = 'Banky'
+let outcome = vowels.includes(word)
+
+console.log(outcome,Math.floor(vowels.length));
+
+if(outcome === true){
+  return word * 5 + 'fcdyfytf'
 }
+
+const vowelcount = (vowels, word) =>{
+  let counter = 0
+  vowels.flat(Infinity).forEach(word2 =>{
+    if (x === word) counter++
+  })
+  return counter
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
